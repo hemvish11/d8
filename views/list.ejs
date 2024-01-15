@@ -1,0 +1,52 @@
+<%- include('header'); -%>
+    <div class="box" id="heading">
+        <h1><%= title %></h1>
+    </div>
+
+    <div class="box">
+        <% addNewItems.forEach(function(item){ %>
+            <form action="/delete" method="post">
+                <div class="item">
+                    <input type="checkbox" name="checkbox" value="<%= item._id %>" onchange="this.form.submit()">
+                    <p><%=item.name%></p> 
+                </div>
+                <!-- A hidden field lets web developers include data
+                     that cannot be seen or modified by users when a form is submitted. -->
+                <input type="hidden" name="listName" value="<%= title %>">
+            </form>
+        <% }); %>
+        
+        
+        <form class="item" action="/" method="post">
+            <!-- suggestions off karo & add placeholder -->
+            <input type="text" name="newItem" placeholder="New Item" autocomplete="off"> 
+            <!-- Make the value of the button as variable name "title" -->
+            <button type="submit" name="title" value="<%=title%>">+</button> 
+        </form>
+    </div>
+<%- include('footer'); -%>
+
+
+    <!-- <ul name="list-items">
+        <li>Buy Pen</li>
+        <li>Make Notes</li>
+        <li>Revise Notes</li>
+        <li>Crack Interview</li>
+        <li>Got Placed</li>  
+    </ul> -->
+
+
+
+
+<!-- 
+Templates:
+
+Refers to the individual files or components responsible for rendering a specific page or partial view.
+
+Templates often contain the HTML structure and placeholders for dynamic content.
+
+Layouts:
+
+Refers to a higher-level structure that defines the common elements shared across multiple pages, such as headers, footers, and navigation.
+
+Layouts may include placeholders for the dynamic content of individual pages. -->
